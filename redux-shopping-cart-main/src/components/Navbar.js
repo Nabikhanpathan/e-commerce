@@ -1,10 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Filter from './Filter';
 
 const Navbar = () => {
+    const navigate=useNavigate()
     const items = useSelector((state) => state.mark);
+    const auth=sessionStorage.getItem('user')
+    const logout=()=>{
+        sessionStorage.clear()
+        navigate('/signin')
+    }
+    
     return (
         <div
             style={{
@@ -13,7 +20,9 @@ const Navbar = () => {
                 justifyContent: 'space-between',
             }}
         >
-            <span className="logo">HAPPYS STORE</span>
+            <span className="logo">MYSTORE</span>
+            
+        
             <div>
                 <Link className="navLink" to="/">
                     Home
@@ -25,9 +34,22 @@ const Navbar = () => {
                     category
                 </Link>
                 <span className="cartCount">Cart items: {items.length}</span>
+                <Link className="navLink" to="/Signin" onClick={logout}>
+                    Logout
+                </Link>
+               
+                <Link className="navLink" to="/Signin">
+                    Login
+                </Link>
+                <Link className="navLink" to="/Register">
+                    Register
+                </Link>
+               
             </div>
-            <Filter/>
+
+            
         </div>
+        
     );
 };
 

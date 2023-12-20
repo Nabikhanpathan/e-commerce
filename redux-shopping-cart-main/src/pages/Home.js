@@ -19,7 +19,7 @@ const Home = () => {
         // };
         // fetchProducts();
     }, []);
-     
+      
     const handleAdd = (product) => {
         dispatch(add(product));
     };
@@ -65,7 +65,7 @@ const Home = () => {
                     <h4>{product.title}</h4>
                     <h5>price:<span>{product.price}</span></h5>
                      <h6>category:<span>{product.category}</span></h6>
-                    <button onClick={() => handleAdd(product)} className="btn">
+                    <button onClick={() => handleAdd(product)} className="btn-primary">
                         Add to cart
                     </button>
                 </div>
